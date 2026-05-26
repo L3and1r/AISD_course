@@ -36,7 +36,8 @@ public:
     bool remove(const T& val);
     bool find(const T& val);
 
-    int size() const { return nodeCount; }
+    bool isEmpty() const { return root == nullptr; }
+    int getSize() const { return nodeCount; }
 
     void printTree();
 };
