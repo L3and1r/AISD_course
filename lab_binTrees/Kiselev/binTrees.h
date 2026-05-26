@@ -35,4 +35,8 @@ public:
     void insert(const T& val);
     bool remove(const T& val);
     bool find(const T& val);
+
+    int size() const { return nodeCount; }
+
+    void printTree();
 };
