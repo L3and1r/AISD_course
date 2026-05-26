@@ -24,7 +24,6 @@ node<T>* binTree<T>::copyTree(node<T>* current) {
         return nullptr;
     }
 
-    // Итеративное копирование с использованием стека
     std::stack<std::pair<node<T>*, node<T>**> > stack;
     node<T>* newRoot = new node<T>(current->value);
     stack.push(std::make_pair(current, &newRoot));
@@ -62,7 +61,6 @@ template <typename T>
 void binTree<T>::clearTree(node<T>* current) {
     if (current == nullptr) return;
 
-    // Итеративная очистка с использованием стека
     std::stack<node<T>*> stack;
     stack.push(current);
 
@@ -138,20 +136,17 @@ node<T>* binTree<T>::removeNode(node<T>* current, const T& val, bool& removed) {
     else {
         removed = true;
 
-        // Случай 1: нет левого ребёнка
         if (current->left == nullptr) {
             node<T>* temp = current->right;
             delete current;
             return temp;
         }
-        // Случай 2: нет правого ребёнка
         else if (current->right == nullptr) {
             node<T>* temp = current->left;
             delete current;
             return temp;
         }
 
-        // Случай 3: есть оба ребёнка
         node<T>* temp = findMin(current->right);
         current->value = temp->value;
 
@@ -191,11 +186,11 @@ bool binTree<T>::find(const T& val) {
 template <typename T>
 void binTree<T>::printTree() {
     if (root == nullptr) {
-        std::cout << "Дерево пусто" << std::endl;
+        std::cout << "Tree is empty" << std::endl;
         return;
     }
 
-    std::cout << "Бинарное дерево (уровневый обход):" << std::endl;
+    std::cout << "Bin Tree (Level bypass):" << std::endl;
     std::queue<node<T>*> q;
     q.push(root);
 
@@ -218,7 +213,6 @@ void binTree<T>::printTree() {
     }
 }
 
-// Явная инстанциация шаблона для int и других типов
 template class binTree<int>;
 template class binTree<char>;
 template class binTree<double>;
